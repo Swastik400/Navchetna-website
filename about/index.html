@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -55,6 +55,57 @@
 
         .scroll-fade-delay-3 {
             transition-delay: 0.6s;
+        }
+        * {
+            font-family: 'Space Grotesk', sans-serif !important;
+        }
+        body {
+            font-family: 'Space Grotesk', sans-serif !important;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif !important;
+            font-weight: 400;
+        }
+        body {
+            overflow-x: hidden;
+        }
+        * {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        /* Black & White Theme Override */
+        .text-cyan-300, .text-cyan-400, .text-emerald-300, .text-emerald-400,
+        .text-indigo-300, .text-indigo-400, .text-violet-300, .text-violet-400,
+        .text-blue-300, .text-blue-400, .text-green-300, .text-green-400,
+        .text-orange-300, .text-orange-400, .text-purple-300, .text-purple-400,
+        .text-pink-300, .text-pink-400, .text-teal-300, .text-teal-400,
+        .text-yellow-300, .text-yellow-400 {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+        .bg-emerald-500\/20, .bg-teal-500\/20, .bg-blue-500\/20, .bg-indigo-500\/20,
+        .bg-purple-500\/20, .bg-pink-500\/20, .bg-orange-500\/20, .bg-red-500\/20,
+        .bg-cyan-500\/20 {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+        }
+        .ring-emerald-500\/30, .ring-blue-500\/30, .ring-purple-500\/30,
+        .ring-orange-500\/30, .ring-cyan-500\/30 {
+            --tw-ring-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        .from-emerald-500\/20, .to-teal-500\/20, .from-blue-500\/20, .to-indigo-500\/20,
+        .from-purple-500\/20, .to-pink-500\/20, .from-orange-500\/20, .to-red-500\/20,
+        .from-cyan-500\/20, .to-blue-500\/20 {
+            --tw-gradient-from: rgba(255, 255, 255, 0.05) !important;
+            --tw-gradient-to: rgba(255, 255, 255, 0.05) !important;
+        }
+        .hover\:from-neutral-400\/30:hover, .hover\:from-purple-400\/30:hover,
+        .hover\:from-orange-400\/30:hover, .hover\:from-cyan-400\/30:hover {
+            --tw-gradient-from: rgba(255, 255, 255, 0.1) !important;
+        }
+        .bg-neutral-400, .bg-purple-400, .bg-orange-400 {
+            background-color: rgba(255, 255, 255, 0.4) !important;
+        }
+        .shadow-\[0_0_0_3px_rgba\(255\,255\,255\,0\.15\)\] {
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15) !important;
         }
     </style>
 </head>
@@ -133,16 +184,16 @@
             <div class="flex flex-col text-center space-y-6 items-center">
                 <div class="mb-6 opacity-0 translate-y-4 blur-sm animate-[slideInBlur_0.8s_ease-out_0.8s_forwards]">
                     <span class="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] border-white/10 bg-neutral-900/50 text-neutral-300">
-                        <span class="h-1.5 w-1.5 rounded-full shadow-[0_0_0_3px_rgba(255,255,255,0.15)] bg-neutral-400/80"></span>
+                        <span class="h-1.5 w-1.5 rounded-full shadow-[0_0_0_3px_rgba(255,255,255,0.15)] bg-white"></span>
                         Our Story
                     </span>
                 </div>
 
-                <h1 class="max-w-4xl text-5xl sm:text-6xl md:text-7xl tracking-tight leading-[0.95] text-transparent bg-clip-text bg-gradient-to-b font-semibold opacity-0 translate-y-8 blur-sm animate-[slideInBlur_1s_ease-out_1s_forwards] from-neutral-100 via-neutral-200 to-neutral-400/90 font-space" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.025em;">
+                <h1 class="max-w-4xl text-5xl md:text-7xl font-light tracking-tighter leading-[0.9] text-white opacity-0 translate-y-8 blur-sm animate-[slideInBlur_1s_ease-out_1s_forwards]" style="font-family: 'Space Grotesk', sans-serif;">
                     <span class="block">Building the Future with</span>
                     <span class="block">
                         <span class="bg-clip-text text-transparent bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-400/80">Conscious</span>
-                        <span class="bg-clip-text text-transparent italic font-['Playfair_Display'] bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-400/80">Intelligence</span>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-400/80">Intelligence</span>
                     </span>
                 </h1>
 
@@ -168,7 +219,7 @@
                     </span>
                 </div>
                 <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-slate-50 mb-6 font-space" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.025em;">
-                    Our <span class="bg-clip-text text-transparent italic font-['Playfair_Display'] bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-400/80">Journey</span>
+                    Our <span class="bg-clip-text text-transparent bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-400/80">Journey</span>
                 </h2>
                 <p class="text-lg text-neutral-300 leading-relaxed mb-6">
                     Every great journey starts with a simple idea and ours started on 6th September 2024. Five friends Ayushmaan, Varun, Suman, Swastik, and Dhraval were sitting together, talking about school, college, and life, and suddenly realized something: education could be so much better with the right tools and technology.
@@ -336,7 +387,7 @@
 
         <div class="max-w-3xl scroll-fade scroll-fade-delay text-center mr-auto ml-auto mb-16">
             <h2 class="md:text-6xl text-4xl font-semibold tracking-tight text-slate-50">
-                More Than Just <span class="bg-clip-text text-transparent italic font-['Playfair_Display'] bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-400/80">Code</span>
+                More Than Just <span class="bg-clip-text text-transparent bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-400/80">Code</span>
             </h2>
             <p class="md:text-lg text-base text-slate-400 mt-4">We're friendly, approachable, and obsessed with making technology work for real people. Every idea we work on comes from the heart.</p>
         </div>
@@ -345,22 +396,22 @@
             <div class="scroll-fade">
                 <h3 class="text-2xl font-semibold text-white mb-6">From Dreamers to Builders</h3>
                 <p class="text-lg text-neutral-300 leading-relaxed mb-6">
-                    Back then, we were just a bunch of dreamers with laptops and big ideas. No fancy offices, no investors, no roadmap—just a shared vision and a lot of determination. We wanted to create solutions that actually help learners and make learning exciting, not just another tech project.
+                    Back then, we were just a bunch of dreamers with laptops and big ideas. No fancy offices, no investors, no roadmapï¿½just a shared vision and a lot of determination. We wanted to create solutions that actually help learners and make learning exciting, not just another tech project.
                 </p>
                 <p class="text-base text-neutral-400 leading-relaxed mb-6">
                     Today, we've grown from five friends to a core team of six and a family of 15 passionate people. Our growth has always been powered by curiosity, creativity, and a love for building things that matter.
                 </p>
                 <div class="flex items-center gap-4">
                     <div class="text-center">
-                        <div class="text-2xl font-bold text-neutral-400">15+</div>
+                        <div class="text-2xl font-bold text-white">15+</div>
                         <div class="text-sm text-neutral-400">Team Members</div>
                     </div>
                     <div class="text-center">
-                        <div class="text-2xl font-bold text-neutral-400">4</div>
+                        <div class="text-2xl font-bold text-white">4</div>
                         <div class="text-sm text-neutral-400">Core Products</div>
                     </div>
                     <div class="text-center">
-                        <div class="text-2xl font-bold text-purple-400">2024</div>
+                        <div class="text-2xl font-bold text-white">2024</div>
                         <div class="text-sm text-neutral-400">Founded</div>
                     </div>
                 </div>
@@ -408,7 +459,7 @@
     <section class="w-full max-w-7xl sm:px-6 lg:px-8 md:py-20 mr-auto ml-auto pt-14 pr-4 pb-14 pl-4">
         <div class="text-center mb-16 scroll-fade">
             <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-slate-50 mb-6">
-                Innovation Served <span class="bg-clip-text text-transparent italic font-['Playfair_Display'] bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-400/80">Hotter</span> Than Coffee
+                Innovation Served <span class="bg-clip-text text-transparent bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-400/80">Hotter</span> Than Coffee
             </h2>
             <p class="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed">
                 Our philosophy is simple: technology should make life better, not more complicated. We believe in building solutions that people actually want to use, not just because they have to.
@@ -476,7 +527,7 @@
 
         <div class="max-w-3xl scroll-fade scroll-fade-delay text-center mr-auto ml-auto mb-16">
             <h2 class="md:text-6xl text-4xl font-semibold tracking-tight text-slate-50">
-                Our <span class="bg-clip-text text-transparent italic font-['Playfair_Display'] bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-400/80">Team</span>
+                Our <span class="bg-clip-text text-transparent bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-400/80">Team</span>
             </h2>
             <p class="md:text-lg text-base text-slate-400 mt-4">From five friends with a shared dream to a core team of six and a family of 15 passionate people.</p>
         </div>
@@ -652,7 +703,7 @@
             <div class="max-w-3xl text-center mx-auto mt-6 scroll-fade scroll-fade-delay">
                 <h2 class="md:text-6xl text-4xl font-semibold text-slate-50 tracking-tight">Ready to Transform</h2>
                 <h2 class="text-4xl md:text-6xl font-semibold tracking-tight text-slate-50 mt-1">
-                    Your <span class="bg-clip-text text-transparent italic font-['Playfair_Display'] bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-400/80">Vision</span> into Reality?
+                    Your <span class="bg-clip-text text-transparent bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-400/80">Vision</span> into Reality?
                 </h2>
                 <p class="mt-4 text-base md:text-lg text-slate-400">
                     Let's discuss how NAVCHETNA can help bring your ideas to life with conscious intelligence.
@@ -725,8 +776,8 @@
         </nav>
 
         <div class="mt-8 flex items-center justify-between text-xs text-slate-500 flex-wrap gap-4">
-            <span>© 2025 NINELLMS SOLUTIONS LLP. All rights reserved.</span>
-            <a href="https://nineone152.com">Co-Brand with NINEONE15²</a>
+            <span>ï¿½ 2025 NINELLMS SOLUTIONS LLP. All rights reserved.</span>
+            <a href="https://nineone152.com">Co-Brand with NINEONE15ï¿½</a>
         </div>
     </footer>
 
