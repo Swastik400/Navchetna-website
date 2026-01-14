@@ -6,7 +6,7 @@ Every great journey starts with a simple idea—and ours started on 6th Septembe
 
 Back then, we were just a bunch of dreamers with laptops and big ideas. No fancy offices, no investors, no roadmap—just a shared vision and a lot of determination. We wanted to create solutions that actually help learners and make learning exciting, not just another tech project. That day marked the beginning of our story.
 
-Today, Navchetna is proud to be based in Jodhpur, Rajasthan, India, and has grown into a company that does both products and services. Our flagship products—Osmium, Natraj, and Plaur—are designed to make learning smarter and more accessible. And our services? Everything from web, iOS, and Android development to AI/ML solutions, cybersecurity, and more. Basically, if it involves technology and innovation, we’re on it.
+Today, Navchetna is proud to be based in Jodhpur, Rajasthan, India, and has grown into a company that does both products and services. Our flagship products—Osmium, Natraj, and Aegis auth—are designed to make learning smarter and more accessible. And our services? Everything from web, iOS, and Android development to AI/ML solutions, cybersecurity, and more. Basically, if it involves technology and innovation, we’re on it.
 
 How We Make It Happen
 

@@ -15,10 +15,35 @@
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <!-- Image Preloader -->
     <script src="/assets/js/imagePreloader.js"></script>
     <style>
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        #preloader.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
         @keyframes slideInBlur {
             0% {
                 opacity: 0;
@@ -59,7 +84,12 @@
     </style>
 </head>
 
-<body class="antialiased selection:bg-indigo-500/30 selection:text-indigo-200 text-white bg-black">
+<body class="antialiased selection:bg-neutral-500/30 selection:text-neutral-200 text-white bg-black">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
     <!-- Background -->
     <div class="fixed inset-0 -z-10">
         <div class="absolute inset-0 bg-gradient-to-br from-neutral-950 via-neutral-900/50 to-neutral-950"></div>
@@ -133,17 +163,14 @@
             <div class="flex flex-col text-center space-y-6 items-center">
                 <div class="mb-6 opacity-0 translate-y-4 blur-sm animate-[slideInBlur_0.8s_ease-out_0.8s_forwards]">
                     <span class="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] border-white/10 bg-neutral-900/50 text-neutral-300">
-                        <span class="h-1.5 w-1.5 rounded-full shadow-[0_0_0_3px_rgba(16,185,129,0.15)] bg-emerald-400/80"></span>
+                        <span class="h-1.5 w-1.5 rounded-full shadow-[0_0_0_3px_rgba(255,255,255,0.15)] bg-neutral-400/80"></span>
                         Comprehensive Solutions
                     </span>
                 </div>
 
-                <h1 class="max-w-4xl text-5xl sm:text-6xl md:text-7xl tracking-tight leading-[0.95] text-transparent bg-clip-text bg-gradient-to-b font-semibold opacity-0 translate-y-8 blur-sm animate-[slideInBlur_1s_ease-out_1s_forwards] from-neutral-100 via-neutral-200 to-neutral-400/90">
+                <h1 class="max-w-4xl text-5xl md:text-7xl font-light tracking-tighter leading-[0.9] text-white opacity-0 translate-y-8 blur-sm animate-[slideInBlur_1s_ease-out_1s_forwards]" style="font-family: 'Space Grotesk', sans-serif;">
                     <span class="block">Intelligent Services for</span>
-                    <span class="block">
-                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-400/80">Every</span>
-                        <span class="bg-clip-text italic font-['Playfair_Display']">Challenge</span>
-                    </span>
+                    <span class="block">Every Challenge</span>
                 </h1>
 
                 <p class="max-w-2xl sm:text-lg animate-[slideInBlur_0.8s_ease-out_1.2s_forwards] text-base text-neutral-300/80 opacity-0 mt-6 blur-sm translate-y-6">
@@ -157,7 +184,7 @@
     <section class="w-full max-w-7xl sm:px-6 lg:px-8 md:py-20 mr-auto ml-auto pt-14 pr-4 pb-14 pl-4">
         <div class="flex mt-6 mb-12 items-center justify-center scroll-fade">
             <span class="inline-flex items-center gap-2 text-[11px] uppercase tracking-wide border rounded-full pt-1 pr-3 pb-1 pl-3 text-slate-300/80 bg-white/5 border-white/10">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-cyan-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-neutral-300">
                     <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
                     <path d="M2 17l10 5 10-5"></path>
                     <path d="M2 12l10 5 10-5"></path>
@@ -167,29 +194,23 @@
         </div>
 
         <div class="max-w-3xl scroll-fade scroll-fade-delay text-center mr-auto ml-auto mb-16">
-            <h2 class="md:text-6xl text-4xl font-semibold tracking-tight text-slate-50">
-                Comprehensive <span class="bg-clip-text text-transparent italic font-['Playfair_Display'] bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-400/80">Solutions</span>
+            <h2 class="md:text-6xl text-4xl font-light tracking-tighter leading-[0.9] text-slate-50" style="font-family: 'Space Grotesk', sans-serif;">
+                Comprehensive Solutions
             </h2>
             <p class="md:text-lg text-base text-slate-400 mt-4">Click on any service to explore our detailed offerings and capabilities.</p>
         </div>
 
         <!-- Featured Service -->
         <div class="mb-12">
-            <article class="scroll-fade group relative overflow-hidden bg-gradient-to-br from-blue-500/20 to-indigo-500/20 border-blue-400/30 border-2 rounded-3xl p-8 hover:bg-[radial-gradient(circle_at_top,var(--tw-gradient-stops))] hover:from-blue-400/40 hover:to-blue-400/10 cursor-pointer service-card ring-1 ring-blue-400/20" data-service="Project Management & Operations" data-description="End-to-end project planning, Agile methodologies, team management, risk analysis, and business process optimization">
+            <article class="scroll-fade group relative overflow-hidden bg-gradient-to-br from-neutral-500/20 to-neutral-600/20 border-blue-400/30 border-2 rounded-3xl p-8 hover:bg-[radial-gradient(circle_at_top,var(--tw-gradient-stops))] hover:from-blue-400/40 hover:to-blue-400/10 cursor-pointer service-card ring-1 ring-blue-400/20" data-service="Project Management & Operations" data-description="End-to-end project planning, Agile methodologies, team management, risk analysis, and business process optimization">
                 <div class="pointer-events-none absolute inset-0 opacity-[0.08]" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 1px); background-size: 16px 16px;"></div>
                 <div class="flex items-start justify-between mb-6">
-                    <div class="relative flex w-14 h-14 ring-2 ring-blue-400/40 bg-blue-500/20 rounded-2xl shadow-xl items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-blue-300">
-                            <path d="M9 12l2 2 4-4"></path>
-                            <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
-                            <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path>
-                            <path d="M12 3c0 1-1 3-3 3s-3-2-3-3 1-3 3-3 3 2 3 3"></path>
-                            <path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3"></path>
-                        </svg>
+                    <div class="relative flex w-14 h-14 ring-2 ring-neutral-400/40 bg-neutral-500/20 rounded-2xl shadow-xl items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 256 256" class="text-neutral-300"><path d="M240,104H229.2L201.42,41.5A16,16,0,0,0,186.8,32H69.2a16,16,0,0,0-14.62,9.5L26.8,104H16a8,8,0,0,0,0,16h8v80a16,16,0,0,0,16,16H64a16,16,0,0,0,16-16v-8h96v8a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V120h8a8,8,0,0,0,0-16ZM69.2,48H186.8l24.89,56H44.31ZM64,200H40V184H64Zm128,0V184h24v16Zm24-32H40V120H216ZM56,144a8,8,0,0,1,8-8H80a8,8,0,0,1,0,16H64A8,8,0,0,1,56,144Zm112,0a8,8,0,0,1,8-8h16a8,8,0,0,1,0,16H176A8,8,0,0,1,168,144Z"></path></svg>
                     </div>
                     <div class="flex items-center gap-2">
-                        <span class="px-3 py-1 bg-blue-400/20 text-blue-300 rounded-full text-xs font-medium uppercase tracking-wider">Core Service</span>
-                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-400/20 ring-1 ring-blue-400/30 text-blue-300">
+                        <span class="px-3 py-1 bg-neutral-400/20 text-neutral-300 rounded-full text-xs font-medium uppercase tracking-wider">Core Service</span>
+                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-neutral-400/20 ring-1 ring-neutral-400/30 text-neutral-300">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
                                 <path d="M7 7h10v10"></path>
                                 <path d="M7 17 17 7"></path>
@@ -198,26 +219,26 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-3xl sm:text-4xl font-bold tracking-tight text-blue-100 mb-2">Project Management & Operations</h3>
-                    <p class="text-blue-300/80 font-medium mb-4">End-to-End Excellence</p>
+                    <h3 class="text-lg md:text-2xl tracking-tight uppercase leading-[1.2] font-light text-white mb-2" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.025em;">Project Management & Operations</h3>
+                    <p class="text-neutral-300/80 font-medium mb-4">End-to-End Excellence</p>
                     <p class="text-base text-white/80 leading-relaxed mb-6">
                         Comprehensive project planning and execution using Agile, Scrum, and Kanban methodologies. Expert team and resource management with strategic operations optimization, risk analysis, and performance monitoring.
                     </p>
                     <div class="grid grid-cols-2 gap-4 text-sm">
-                        <div class="flex items-center gap-2 text-blue-200/80">
-                            <div class="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+                        <div class="flex items-center gap-2 text-neutral-200/80">
+                            <div class="w-1.5 h-1.5 bg-neutral-400 rounded-full"></div>
                             Agile & Scrum Methodologies
                         </div>
-                        <div class="flex items-center gap-2 text-blue-200/80">
-                            <div class="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+                        <div class="flex items-center gap-2 text-neutral-200/80">
+                            <div class="w-1.5 h-1.5 bg-neutral-400 rounded-full"></div>
                             Risk Analysis & Mitigation
                         </div>
-                        <div class="flex items-center gap-2 text-blue-200/80">
-                            <div class="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+                        <div class="flex items-center gap-2 text-neutral-200/80">
+                            <div class="w-1.5 h-1.5 bg-neutral-400 rounded-full"></div>
                             Team & Resource Management
                         </div>
-                        <div class="flex items-center gap-2 text-blue-200/80">
-                            <div class="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+                        <div class="flex items-center gap-2 text-neutral-200/80">
+                            <div class="w-1.5 h-1.5 bg-neutral-400 rounded-full"></div>
                             Performance Monitoring
                         </div>
                     </div>
@@ -232,10 +253,7 @@
                 <div class="pointer-events-none absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 1px); background-size: 14px 14px;"></div>
                 <div class="flex items-start justify-between">
                     <div class="relative flex w-10 h-10 ring-1 ring-white/20 bg-slate-50/5 rounded-full shadow-lg items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                            <polyline points="16 18 22 12 16 6"></polyline>
-                            <polyline points="8 6 2 12 8 18"></polyline>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"></path></svg>
                     </div>
                     <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/5 ring-1 ring-white/10 text-white/70">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
@@ -245,7 +263,7 @@
                     </span>
                 </div>
                 <div class="mt-4">
-                    <h3 class="text-xl sm:text-2xl font-semibold tracking-tight">Software Development</h3>
+                    <h3 class="text-lg md:text-2xl tracking-tight uppercase leading-[1.2] font-light text-white" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.025em;">Software Development</h3>
                     <p class="text-sm text-white/60 mt-1">Full-Stack Solutions</p>
                     <p class="mt-3 text-sm text-white/70">
                         Mobile apps, web platforms, desktop software, games, and enterprise solutions.
@@ -258,9 +276,7 @@
                 <div class="pointer-events-none absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 1px); background-size: 14px 14px;"></div>
                 <div class="flex items-start justify-between">
                     <div class="relative flex w-10 h-10 ring-1 ring-white/20 bg-slate-50/5 rounded-full shadow-lg items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                            <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h4a2 2 0 0 1 2 2v1.28c.6.35 1 .98 1 1.72 0 .74-.4 1.38-1 1.72V15a2 2 0 0 1-2 2h-4v1.27c.6.35 1 .98 1 1.73a2 2 0 1 1-4 0c0-.75.4-1.38 1-1.73V17H7a2 2 0 0 1-2-2v-1.28c-.6-.35-1-.98-1-1.72 0-.74.4-1.37 1-1.72V9a2 2 0 0 1 2-2h4V5.73c-.6-.35-1-.99-1-1.73a2 2 0 0 1 2-2Z"></path>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M248,124a56.11,56.11,0,0,0-32-50.61V72a48,48,0,0,0-88-26.49A48,48,0,0,0,40,72v1.39a56,56,0,0,0,0,101.2V176a48,48,0,0,0,88,26.49A48,48,0,0,0,216,176v-1.41A56.09,56.09,0,0,0,248,124ZM88,208a32,32,0,0,1-31.81-28.56A55.87,55.87,0,0,0,64,180h8a8,8,0,0,0,0-16H64A40,40,0,0,1,50.67,86.27,8,8,0,0,0,56,78.73V72a32,32,0,0,1,64,0v68.26A47.8,47.8,0,0,0,88,128a8,8,0,0,0,0,16,32,32,0,0,1,0,64Zm104-44h-8a8,8,0,0,0,0,16h8a55.87,55.87,0,0,0,7.81-.56A32,32,0,1,1,168,144a8,8,0,0,0,0-16,47.8,47.8,0,0,0-32,12.26V72a32,32,0,0,1,64,0v6.73a8,8,0,0,0,5.33,7.54A40,40,0,0,1,192,164Zm16-52a8,8,0,0,1-8,8h-4a8,8,0,0,1,0-16h4A8,8,0,0,1,208,112ZM60,120H56a8,8,0,0,1,0-16h4a8,8,0,0,1,0,16Z"></path></svg>
                     </div>
                     <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/5 ring-1 ring-white/10 text-white/70">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
@@ -270,7 +286,7 @@
                     </span>
                 </div>
                 <div class="mt-4">
-                    <h3 class="text-xl sm:text-2xl font-semibold tracking-tight">AI & Machine Learning</h3>
+                    <h3 class="text-lg md:text-2xl tracking-tight uppercase leading-[1.2] font-light text-white" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.025em;">AI & Machine Learning</h3>
                     <p class="text-sm text-white/60 mt-1">Intelligence Systems</p>
                     <p class="mt-3 text-sm text-white/70">
                         LLMs, computer vision, NLP, generative AI, and intelligent automation systems.
@@ -283,9 +299,7 @@
                 <div class="pointer-events-none absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 1px); background-size: 14px 14px;"></div>
                 <div class="flex items-start justify-between">
                     <div class="relative flex w-10 h-10 ring-1 ring-white/20 bg-slate-50/5 rounded-full shadow-lg items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M160,40a88.09,88.09,0,0,0-78.71,48.67A64,64,0,1,0,72,216h88a88,88,0,0,0,0-176Zm0,160H72a48,48,0,0,1,0-96c1.1,0,2.2,0,3.29.11A88,88,0,0,0,72,128a8,8,0,0,0,16,0,72,72,0,1,1,72,72Z"></path></svg>
                     </div>
                     <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/5 ring-1 ring-white/10 text-white/70">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
@@ -295,7 +309,7 @@
                     </span>
                 </div>
                 <div class="mt-4">
-                    <h3 class="text-xl sm:text-2xl font-semibold tracking-tight">Cloud & Infrastructure</h3>
+                    <h3 class="text-lg md:text-2xl tracking-tight uppercase leading-[1.2] font-light text-white" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.025em;">Cloud & Infrastructure</h3>
                     <p class="text-sm text-white/60 mt-1">Scalable Systems</p>
                     <p class="mt-3 text-sm text-white/70">
                         AWS/Azure/GCP, IoT development, DevOps automation, and hybrid cloud solutions.
@@ -308,10 +322,7 @@
                 <div class="pointer-events-none absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 1px); background-size: 14px 14px;"></div>
                 <div class="flex items-start justify-between">
                     <div class="relative flex w-10 h-10 ring-1 ring-white/20 bg-slate-50/5 rounded-full shadow-lg items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M200.77,53.89A103.27,103.27,0,0,0,128,24h-1.07A104,104,0,0,0,24,128c0,43,26.58,79.06,69.36,94.17A32,32,0,0,0,136,192a8,8,0,0,0-16,0,16,16,0,0,1-32,0c0-5.42,4.09-10.68,11.16-14.42A8,8,0,0,0,96,162.16,24,24,0,0,1,109.26,136h37.48A24,24,0,0,1,160,162.16a8,8,0,0,0-3.16,15.42C164.91,181.32,169,186.58,169,192a16,16,0,0,1-32,0,8,8,0,0,0-16,0,32,32,0,0,0,63,5.53,115.11,115.11,0,0,0,26.36-7.76A104,104,0,0,0,200.77,53.89ZM128,40a88,88,0,0,1,87.93,86.4,8,8,0,0,0-3.24,1.39C206.28,132.12,203.29,136,200,136s-6.28-3.88-12.69-8.21a35.38,35.38,0,0,0-38.62,0C142.28,132.12,139.29,136,136,136s-6.28-3.88-12.69-8.21a35.38,35.38,0,0,0-38.62,0C78.28,132.12,75.29,136,72,136s-6.28-3.88-12.69-8.21a35.38,35.38,0,0,0-38.62,0A8,8,0,0,0,16,126.4,88,88,0,0,1,128,40Z"></path></svg>
                     </div>
                     <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/5 ring-1 ring-white/10 text-white/70">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
@@ -321,7 +332,7 @@
                     </span>
                 </div>
                 <div class="mt-4">
-                    <h3 class="text-xl sm:text-2xl font-semibold tracking-tight">Design & Branding</h3>
+                    <h3 class="text-lg md:text-2xl tracking-tight uppercase leading-[1.2] font-light text-white">Design & Branding</h3>
                     <p class="text-sm text-white/60 mt-1">Visual Identity</p>
                     <p class="mt-3 text-sm text-white/70">
                         UI/UX design, logos, branding identity, motion graphics, and visual communications.
@@ -334,10 +345,7 @@
                 <div class="pointer-events-none absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 1px); background-size: 14px 14px;"></div>
                 <div class="flex items-start justify-between">
                     <div class="relative flex w-10 h-10 ring-1 ring-white/20 bg-slate-50/5 rounded-full shadow-lg items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                            <path d="M7 10v12"></path>
-                            <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z"></path>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M228.54,86.66l-176.06-54A16,16,0,0,0,32,48V192a16,16,0,0,0,16,16,16,16,0,0,0,4.52-.65L136,181.73V192a16,16,0,0,0,16,16h32a16,16,0,0,0,16-16v-29.9l28.54-8.75A16.09,16.09,0,0,0,240,138V102A16.09,16.09,0,0,0,228.54,86.66ZM136,165,48,192V48l88,27Zm48,27H152V176.82L184,167Zm40-54-40,12.27V103.72L224,91.91Z"></path></svg>
                     </div>
                     <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/5 ring-1 ring-white/10 text-white/70">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
@@ -347,7 +355,7 @@
                     </span>
                 </div>
                 <div class="mt-4">
-                    <h3 class="text-xl sm:text-2xl font-semibold tracking-tight">Marketing & Outreach</h3>
+                    <h3 class="text-lg md:text-2xl tracking-tight uppercase leading-[1.2] font-light text-white">Marketing & Outreach</h3>
                     <p class="text-sm text-white/60 mt-1">Growth Strategy</p>
                     <p class="mt-3 text-sm text-white/70">
                         Digital marketing, SEO/SEM, social media, email campaigns, and analytics.
@@ -360,10 +368,7 @@
                 <div class="pointer-events-none absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 1px); background-size: 14px 14px;"></div>
                 <div class="flex items-start justify-between">
                     <div class="relative flex w-10 h-10 ring-1 ring-white/20 bg-slate-50/5 rounded-full shadow-lg items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                            <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M232,80v96a16,16,0,0,1-16,16H147.88L101,229.33A15.86,15.86,0,0,1,90.67,232H88a16,16,0,0,1-16-16V192H40a16,16,0,0,1-16-16V80A16,16,0,0,1,40,64H216A16,16,0,0,1,232,80Zm-16,96V80H40v96H72a8,8,0,0,1,8,8v24.1l42.67-32a8,8,0,0,1,4.8-1.6H216Z"></path></svg>
                     </div>
                     <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/5 ring-1 ring-white/10 text-white/70">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
@@ -373,7 +378,7 @@
                     </span>
                 </div>
                 <div class="mt-4">
-                    <h3 class="text-xl sm:text-2xl font-semibold tracking-tight">Content & Media</h3>
+                    <h3 class="text-lg md:text-2xl tracking-tight uppercase leading-[1.2] font-light text-white">Content & Media</h3>
                     <p class="text-sm text-white/60 mt-1">Creative Production</p>
                     <p class="mt-3 text-sm text-white/70">
                         Video production, content writing, editing, and podcast creation services.
@@ -386,12 +391,7 @@
                 <div class="pointer-events-none absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 1px); background-size: 14px 14px;"></div>
                 <div class="flex items-start justify-between">
                     <div class="relative flex w-10 h-10 ring-1 ring-white/20 bg-slate-50/5 rounded-full shadow-lg items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M164.47,195.63a8,8,0,0,1-6.7,12.37H10.23a8,8,0,0,1-6.7-12.37l78.77-120a8,8,0,0,1,13.4,0Zm87.91-.15-41.67-96a8,8,0,0,0-14.7,0l-41.67,96a8,8,0,0,0,14.7,6.38L179.39,184h41.22l10.35,23.85A8,8,0,0,0,238.38,195.48ZM187.72,168,200,139.88,212.28,168ZM80,144a8,8,0,0,0,8-8V80a8,8,0,0,0-16,0v56A8,8,0,0,0,80,144Zm24,0a8,8,0,0,0,8-8V96a8,8,0,0,0-16,0v40A8,8,0,0,0,104,144Zm24,0a8,8,0,0,0,8-8V112a8,8,0,0,0-16,0v24A8,8,0,0,0,128,144Z"></path></svg>
                     </div>
                     <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/5 ring-1 ring-white/10 text-white/70">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
@@ -401,7 +401,7 @@
                     </span>
                 </div>
                 <div class="mt-4">
-                    <h3 class="text-xl sm:text-2xl font-semibold tracking-tight">Research & Consulting</h3>
+                    <h3 class="text-lg md:text-2xl tracking-tight uppercase leading-[1.2] font-light text-white">Research & Consulting</h3>
                     <p class="text-sm text-white/60 mt-1">Strategic Guidance</p>
                     <p class="mt-3 text-sm text-white/70">
                         Business strategy, market research, feasibility studies, and technology consulting.
@@ -414,10 +414,7 @@
                 <div class="pointer-events-none absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 1px); background-size: 14px 14px;"></div>
                 <div class="flex items-start justify-between">
                     <div class="relative flex w-10 h-10 ring-1 ring-white/20 bg-slate-50/5 rounded-full shadow-lg items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                            <path d="M9 12l2 2 4-4"></path>
-                            <path d="M3 5c0-1.1.9-2 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Z"></path>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M128,136a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h32A8,8,0,0,1,128,136Zm40-8H152a8,8,0,0,0,0,16h16a8,8,0,0,0,0-16Zm-24,32H136a8,8,0,0,0,0,16h8a8,8,0,0,0,0-16Zm64-96H176V56a24,24,0,0,0-24-24H104A24,24,0,0,0,80,56v8H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V80A16,16,0,0,0,208,64ZM96,56a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM208,208H48V80H208V208Z"></path></svg>
                     </div>
                     <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/5 ring-1 ring-white/10 text-white/70">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
@@ -427,7 +424,7 @@
                     </span>
                 </div>
                 <div class="mt-4">
-                    <h3 class="text-xl sm:text-2xl font-semibold tracking-tight">Legal & Compliance</h3>
+                    <h3 class="text-lg md:text-2xl tracking-tight uppercase leading-[1.2] font-light text-white">Legal & Compliance</h3>
                     <p class="text-sm text-white/60 mt-1">Risk Management</p>
                     <p class="mt-3 text-sm text-white/70">
                         Contract drafting, IP protection, compliance management, and legal tech solutions.
@@ -440,9 +437,7 @@
                 <div class="pointer-events-none absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 1px); background-size: 14px 14px;"></div>
                 <div class="flex items-start justify-between">
                     <div class="relative flex w-10 h-10 ring-1 ring-white/20 bg-slate-50/5 rounded-full shadow-lg items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M208,40H48A16,16,0,0,0,32,56v58.77c0,89.61,75.82,119.34,91,124.39a8,8,0,0,0,10,0c15.2-5.05,91-34.78,91-124.39V56A16,16,0,0,0,208,40Zm0,74.79c0,78.42-66.35,104.62-80,109.91-13.53-5.19-80-31.09-80-109.91V56H208Z"></path></svg>
                     </div>
                     <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/5 ring-1 ring-white/10 text-white/70">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
@@ -452,7 +447,7 @@
                     </span>
                 </div>
                 <div class="mt-4">
-                    <h3 class="text-xl sm:text-2xl font-semibold tracking-tight">Cybersecurity</h3>
+                    <h3 class="text-lg md:text-2xl tracking-tight uppercase leading-[1.2] font-light text-white">Cybersecurity</h3>
                     <p class="text-sm text-white/60 mt-1">Security Solutions</p>
                     <p class="mt-3 text-sm text-white/70">
                         Penetration testing, security audits, network protection, and SOC services.
@@ -465,9 +460,7 @@
                 <div class="pointer-events-none absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 1px); background-size: 14px 14px;"></div>
                 <div class="flex items-start justify-between">
                     <div class="relative flex w-10 h-10 ring-1 ring-white/20 bg-slate-50/5 rounded-full shadow-lg items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                            <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h4a2 2 0 0 1 2 2v1.28c.6.35 1 .98 1 1.72 0 .74-.4 1.38-1 1.72V15a2 2 0 0 1-2 2h-4v1.27c.6.35 1 .98 1 1.73a2 2 0 1 1-4 0c0-.75.4-1.38 1-1.73V17H7a2 2 0 0 1-2-2v-1.28c-.6-.35-1-.98-1-1.72 0-.74.4-1.37 1-1.72V9a2 2 0 0 1 2-2h4V5.73c-.6-.35-1-.99-1-1.73a2 2 0 0 1 2-2Z"></path>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M152,224a8,8,0,0,1-8,8H112a8,8,0,0,1,0-16h32A8,8,0,0,1,152,224Zm70.88-102.4-32-80A8,8,0,0,0,183.42,37l-32,80A8,8,0,0,0,158.88,122.4ZM128,152a8,8,0,0,0-7.42,5l-32,80a8,8,0,0,0,14.84,5.92l32-80A8,8,0,0,0,128,152Zm-24-40a8,8,0,0,0,7.42-5l32-80a8,8,0,0,0-14.84-5.92l-32,80A8,8,0,0,0,104,112Zm120,40a8,8,0,0,0-7.42,5l-32,80a8,8,0,0,0,14.84,5.92l32-80A8,8,0,0,0,224,152ZM80,112a8,8,0,0,0,7.42-5l32-80a8,8,0,0,0-14.84-5.92l-32,80A8,8,0,0,0,80,112Z"></path></svg>
                     </div>
                     <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/5 ring-1 ring-white/10 text-white/70">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
@@ -477,7 +470,7 @@
                     </span>
                 </div>
                 <div class="mt-4">
-                    <h3 class="text-xl sm:text-2xl font-semibold tracking-tight">Emerging Technologies</h3>
+                    <h3 class="text-lg md:text-2xl tracking-tight uppercase leading-[1.2] font-light text-white">Emerging Technologies</h3>
                     <p class="text-sm text-white/60 mt-1">Future Innovation</p>
                     <p class="mt-3 text-sm text-white/70">
                         Blockchain, AR/VR, robotics, embedded systems, and quantum computing.
@@ -490,11 +483,7 @@
                 <div class="pointer-events-none absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 1px); background-size: 14px 14px;"></div>
                 <div class="flex items-start justify-between">
                     <div class="relative flex w-10 h-10 ring-1 ring-white/20 bg-slate-50/5 rounded-full shadow-lg items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                            <path d="M3 21h18"></path>
-                            <path d="M5 21V7l8-4v18"></path>
-                            <path d="M19 21V11l-6-4"></path>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M240,208H224V96a16,16,0,0,0-16-16H164a4,4,0,0,1-4-4V48a16,16,0,0,0-16-16H112A16,16,0,0,0,96,48V80a4,4,0,0,1-4,4H48A16,16,0,0,0,32,100V208H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM112,48h32V208H112ZM48,100H92a4,4,0,0,1,4,4V208H48Zm160,108H160V96h48Z"></path></svg>
                     </div>
                     <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/5 ring-1 ring-white/10 text-white/70">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
@@ -504,7 +493,7 @@
                     </span>
                 </div>
                 <div class="mt-4">
-                    <h3 class="text-xl sm:text-2xl font-semibold tracking-tight">Enterprise Services</h3>
+                    <h3 class="text-lg md:text-2xl tracking-tight uppercase leading-[1.2] font-light text-white">Enterprise Services</h3>
                     <p class="text-sm text-white/60 mt-1">Business Solutions</p>
                     <p class="mt-3 text-sm text-white/70">
                         IT outsourcing, SaaS development, ERP/CRM systems, and HR tech solutions.
@@ -517,13 +506,7 @@
                 <div class="pointer-events-none absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 1px); background-size: 14px 14px;"></div>
                 <div class="flex items-start justify-between">
                     <div class="relative flex w-10 h-10 ring-1 ring-white/20 bg-slate-50/5 rounded-full shadow-lg items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                            <line x1="6" x2="10" y1="12" y2="12"></line>
-                            <line x1="8" x2="8" y1="10" y2="14"></line>
-                            <line x1="15" x2="15.01" y1="13" y2="13"></line>
-                            <line x1="18" x2="18.01" y1="11" y2="11"></line>
-                            <rect width="20" height="12" x="2" y="6" rx="2"></rect>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M176,112H152a8,8,0,0,1,0-16h24a8,8,0,0,1,0,16ZM104,96H96V88a8,8,0,0,0-16,0v8H72a8,8,0,0,0,0,16h8v8a8,8,0,0,0,16,0v-8h8a8,8,0,0,0,0-16ZM241.48,200.65a36,36,0,0,1-54.94,4.81c-.12-.12-.24-.24-.35-.37L146.48,160h-37L69.81,205.09l-.35.37A36.08,36.08,0,0,1,44,216,36,36,0,0,1,8.56,173.75a.68.68,0,0,1,0-.14L24.93,89.52A59.88,59.88,0,0,1,83.89,40H172a60.08,60.08,0,0,1,59,49.25c0,.06,0,.12,0,.18l16.37,84.17a.68.68,0,0,1,0,.14A35.74,35.74,0,0,1,241.48,200.65ZM172,144a44,44,0,0,0,0-88H83.89A43.9,43.9,0,0,0,40.68,92.37l0,.13L24.3,176.59A20,20,0,0,0,58,194.3l41.92-47.59a8,8,0,0,1,6-2.71Zm59.7,32.59-8.74-45A60,60,0,0,1,172,160h-4.2L198,194.31a20.09,20.09,0,0,0,17.46,5.39,20,20,0,0,0,16.23-23.11Z"></path></svg>
                     </div>
                     <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/5 ring-1 ring-white/10 text-white/70">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
@@ -533,7 +516,7 @@
                     </span>
                 </div>
                 <div class="mt-4">
-                    <h3 class="text-xl sm:text-2xl font-semibold tracking-tight">Game Development</h3>
+                    <h3 class="text-lg md:text-2xl tracking-tight uppercase leading-[1.2] font-light text-white">Game Development</h3>
                     <p class="text-sm text-white/60 mt-1">Interactive Entertainment</p>
                     <p class="mt-3 text-sm text-white/70">
                         Mobile, PC, and web games with AR/VR experiences and interactive entertainment solutions.
@@ -549,7 +532,7 @@
     <section class="w-full max-w-7xl sm:px-6 lg:px-8 md:py-20 mr-auto ml-auto pt-14 pr-4 pb-14 pl-4">
         <div class="flex mt-6 mb-6 items-center justify-center scroll-fade">
             <span class="inline-flex items-center gap-2 text-[11px] uppercase tracking-wide border rounded-full pt-1 pr-3 pb-1 pl-3 text-slate-300/80 bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-cyan-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-neutral-300">
                     <circle cx="12" cy="4.5" r="2.5"></circle>
                     <path d="m10.2 6.3-3.9 3.9"></path>
                     <circle cx="4.5" cy="12" r="2.5"></circle>
@@ -563,40 +546,40 @@
         </div>
 
         <div class="max-w-3xl scroll-fade scroll-fade-delay text-center mr-auto ml-auto">
-            <h2 class="md:text-6xl text-4xl font-semibold tracking-tight text-slate-50">
-                How We <span class="bg-clip-text text-transparent italic font-['Playfair_Display'] bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-400/80">Deliver</span>
+            <h2 class="md:text-6xl text-4xl font-light tracking-tighter leading-[0.9] text-slate-50">
+                How We Deliver
             </h2>
             <p class="md:text-lg text-base text-slate-400 mt-4">From discovery to deployment, our proven methodology ensures successful project outcomes.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mt-16">
             <div class="scroll-fade text-center">
-                <div class="h-16 w-16 mx-auto rounded-2xl bg-gradient-to-br from-blue-500/20 to-indigo-500/20 flex items-center justify-center ring-1 ring-blue-500/30 mb-4">
-                    <span class="text-2xl font-bold text-blue-300">1</span>
+                <div class="h-16 w-16 mx-auto rounded-2xl bg-gradient-to-br from-neutral-500/20 to-neutral-600/20 flex items-center justify-center ring-1 ring-neutral-500/30 mb-4">
+                    <span class="text-2xl font-bold text-neutral-300">1</span>
                 </div>
                 <h3 class="text-lg font-semibold text-white mb-2">Plan</h3>
                 <p class="text-sm text-neutral-400">We discuss your vision, research market needs, and create a comprehensive project roadmap.</p>
             </div>
 
             <div class="scroll-fade scroll-fade-delay text-center">
-                <div class="h-16 w-16 mx-auto rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center ring-1 ring-emerald-500/30 mb-4">
-                    <span class="text-2xl font-bold text-emerald-300">2</span>
+                <div class="h-16 w-16 mx-auto rounded-2xl bg-gradient-to-br from-neutral-500/20 to-neutral-600/20 flex items-center justify-center ring-1 ring-neutral-500/30 mb-4">
+                    <span class="text-2xl font-bold text-neutral-300">2</span>
                 </div>
                 <h3 class="text-lg font-semibold text-white mb-2">Strategy</h3>
                 <p class="text-sm text-neutral-400">Crafting a tailored solution strategy with clear milestones and deliverables.</p>
             </div>
 
             <div class="scroll-fade scroll-fade-delay-2 text-center">
-                <div class="h-16 w-16 mx-auto rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center ring-1 ring-purple-500/30 mb-4">
-                    <span class="text-2xl font-bold text-purple-300">3</span>
+                <div class="h-16 w-16 mx-auto rounded-2xl bg-gradient-to-br from-neutral-500/20 to-neutral-600/20 flex items-center justify-center ring-1 ring-neutral-500/30 mb-4">
+                    <span class="text-2xl font-bold text-neutral-300">3</span>
                 </div>
                 <h3 class="text-lg font-semibold text-white mb-2">Development</h3>
                 <p class="text-sm text-neutral-400">Building your solution with agile methodology and continuous feedback loops.</p>
             </div>
 
             <div class="scroll-fade scroll-fade-delay-3 text-center">
-                <div class="h-16 w-16 mx-auto rounded-2xl bg-gradient-to-br from-orange-500/20 to-red-500/20 flex items-center justify-center ring-1 ring-orange-500/30 mb-4">
-                    <span class="text-2xl font-bold text-orange-300">4</span>
+                <div class="h-16 w-16 mx-auto rounded-2xl bg-gradient-to-br from-neutral-500/20 to-neutral-600/20 flex items-center justify-center ring-1 ring-neutral-500/30 mb-4">
+                    <span class="text-2xl font-bold text-neutral-300">4</span>
                 </div>
                 <h3 class="text-lg font-semibold text-white mb-2">Deployment</h3>
                 <p class="text-sm text-neutral-400">Launching your solution with ongoing support and optimization.</p>
@@ -609,7 +592,7 @@
         <div class="relative scroll-fade pt-20">
             <div class="flex items-center justify-center">
                 <span class="inline-flex items-center gap-2 text-[11px] uppercase tracking-wide border rounded-full px-3 py-1 text-slate-300/80 bg-white/5 border-white/10">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-cyan-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-neutral-300">
                         <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
                         <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
                         <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
@@ -620,9 +603,9 @@
             </div>
 
             <div class="max-w-3xl text-center mx-auto mt-6 scroll-fade scroll-fade-delay">
-                <h2 class="md:text-6xl text-4xl font-semibold text-slate-50 tracking-tight">Let's Build Something</h2>
-                <h2 class="text-4xl md:text-6xl font-semibold tracking-tight text-slate-50 mt-1">
-                    <span class="bg-clip-text italic font-['Playfair_Display'] bg-gradient-to-r from-slate-200 via-cyan-300 to-indigo-300">Amazing Together</span>
+                <h2 class="md:text-6xl text-4xl font-light tracking-tighter leading-[0.9] text-slate-50">Let's Build Something</h2>
+                <h2 class="text-3xl md:text-5xl font-light tracking-tighter leading-[0.9] text-slate-50 mt-1">
+                    Amazing Together
                 </h2>
                 <p class="mt-4 text-base md:text-lg text-slate-400">
                     Ready to transform your business with cutting-edge technology? Let's discuss your project.
@@ -749,15 +732,19 @@
         </nav>
 
         <div class="mt-8 flex items-center justify-between text-xs text-slate-500 flex-wrap gap-4">
-            <span>© 2025 NINELLMS SOLUTIONS LLP. All rights reserved.</span>
-            <a href="https://nineone152.com">Co-Brand with NINEONE15²</a>
+            <span>� 2025 NINELLMS SOLUTIONS LLP. All rights reserved.</span>
+            <a href="https://nineone152.com">Co-Brand with NINEONE15�</a>
         </div>
     </footer>
 
     <!-- JavaScript -->
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            preloader.classList.add('fade-out');
+            setTimeout(() => preloader.remove(), 500);
+        });
 
         // Mobile menu toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
